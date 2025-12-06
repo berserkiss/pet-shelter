@@ -1,0 +1,127 @@
+.stripe-payment-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.card-element-wrapper {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-element-wrapper label {
+  display: block;
+  margin-bottom: 0.85rem;
+  color: #374151;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.card-element-container {
+  padding: 1.25rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  transition: all 0.2s;
+  min-height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-element-container .StripeElement {
+  width: 100%;
+  min-height: 50px;
+  padding: 8px 0;
+}
+
+.card-element-container .StripeElement--webkit-autofill {
+  background-color: white !important;
+}
+
+.card-element-container .__PrivateStripeElement {
+  height: 100%;
+  min-height: 50px;
+}
+
+.card-element-container iframe {
+  min-height: 50px !important;
+  height: 50px !important;
+}
+
+.card-element-container:focus-within {
+  border-color: #6504b5;
+  box-shadow: 0 0 0 4px rgba(101, 4, 181, 0.1);
+}
+
+.card-error {
+  background: #fee;
+  border-left: 3px solid #e74c3c;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.test-cards-info {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-left: 3px solid #3b82f6;
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.test-cards-info p {
+  margin: 0.25rem 0;
+  color: #1e40af;
+}
+
+.test-cards-info .currency-note {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  font-style: italic;
+  color: #0369a1;
+}
+
+.test-cards-info code {
+  background: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #6504b5;
+  font-weight: 600;
+}
+
+.stripe-submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #6504b5 0%, #7c1fd8 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(101, 4, 181, 0.3);
+  box-sizing: border-box;
+}
+
+.stripe-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5003a1 0%, #6504b5 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(101, 4, 181, 0.4);
+}
+
+.stripe-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
