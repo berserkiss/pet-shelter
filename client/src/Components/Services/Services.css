@@ -1,0 +1,429 @@
+/* Современный дизайн страницы услуг */
+
+.services-root {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px 80px 20px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Анимированный градиентный фон */
+.services-root::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 50%, rgba(101, 4, 181, 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(254, 160, 52, 0.06) 0%, transparent 50%);
+  animation: gradientShift 20s ease infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, 30px) rotate(180deg);
+  }
+}
+
+.services-root > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Заголовок страницы */
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.services-header h1 {
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 50%, #6504b5 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  animation: gradientText 4s ease infinite;
+  line-height: 1.2;
+}
+
+@keyframes gradientText {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.services-header p {
+  color: #4a5568;
+  font-size: 1.35rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Контейнер услуг - новый layout */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Карточка услуги - современный дизайн */
+.service-box {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 248, 255, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 
+    0 12px 40px rgba(101, 4, 181, 0.12),
+    0 4px 16px rgba(101, 4, 181, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(101, 4, 181, 0.1);
+  position: relative;
+}
+
+.service-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #6504b5 0%, #8b3dff 50%, #fea034 100%);
+  transform: scaleX(0);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.service-box:hover::before {
+  transform: scaleX(1);
+}
+
+.service-box:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(101, 4, 181, 0.2),
+    0 12px 32px rgba(101, 4, 181, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Контейнер изображения */
+.service-image-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+}
+
+.service-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(101, 4, 181, 0.05) 100%);
+  pointer-events: none;
+}
+
+.service-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-box:hover .service-image-container img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Контент карточки */
+.service-content {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.service-content h2 {
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  margin-bottom: 16px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.service-content p {
+  color: #4a5568;
+  font-size: 1.15rem;
+  margin-bottom: 24px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* Список преимуществ */
+.service-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+.service-content ul li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 14px;
+  color: #2d3748;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-content ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+  color: white;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(101, 4, 181, 0.3);
+  transition: all 0.3s ease;
+}
+
+.service-box:hover .service-content ul li::before {
+  transform: scale(1.15) rotate(360deg);
+  box-shadow: 0 4px 12px rgba(101, 4, 181, 0.4);
+}
+
+.service-box:hover .service-content ul li {
+  transform: translateX(4px);
+  color: #1a202c;
+}
+
+/* Кнопка услуги */
+.service-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 50%, #fea034 100%);
+  background-size: 200% auto;
+  color: white;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  margin-top: auto;
+  align-self: flex-start;
+  box-shadow: 
+    0 8px 24px rgba(101, 4, 181, 0.3),
+    0 4px 12px rgba(101, 4, 181, 0.2);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.service-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.service-button:hover::before {
+  left: 100%;
+}
+
+.service-button:hover {
+  background-position: right center;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 12px 32px rgba(101, 4, 181, 0.4),
+    0 8px 20px rgba(101, 4, 181, 0.3);
+}
+
+.service-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Кнопка "Вернуться" */
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.back-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  color: #4a5568;
+  border: 2px solid rgba(101, 4, 181, 0.1);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
+  border-color: rgba(101, 4, 181, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  color: #2d3748;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .services-container {
+    gap: 32px;
+  }
+  
+  .service-content {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 992px) {
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .services-header h1 {
+    font-size: 2.8rem;
+  }
+  
+  .service-image-container {
+    height: 240px;
+  }
+  
+  .service-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-root {
+    padding: 40px 16px 60px 16px;
+  }
+  
+  .services-header {
+    margin-bottom: 50px;
+  }
+  
+  .services-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .services-header p {
+    font-size: 1.15rem;
+  }
+  
+  .service-content {
+    padding: 28px 24px;
+  }
+  
+  .service-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .service-content p {
+    font-size: 1.05rem;
+  }
+  
+  .service-content ul li {
+    font-size: 1rem;
+    padding-left: 32px;
+  }
+  
+  .service-button {
+    width: 100%;
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .services-header p {
+    font-size: 1rem;
+  }
+  
+  .service-image-container {
+    height: 200px;
+  }
+  
+  .service-content {
+    padding: 24px 20px;
+  }
+  
+  .service-content h2 {
+    font-size: 1.4rem;
+  }
+  
+  .service-content p {
+    font-size: 1rem;
+  }
+  
+  .service-content ul li {
+    font-size: 0.95rem;
+    padding-left: 28px;
+    margin-bottom: 12px;
+  }
+  
+  .service-content ul li::before {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .service-button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
