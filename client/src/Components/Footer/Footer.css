@@ -1,0 +1,192 @@
+.footer {
+  background-color: #a6a3b0;
+  padding: 0;
+  border-top: 1px solid #b5b1bb;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Верхняя часть футера */
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+/* Логотип и тэглайн */
+.footer-logo {
+  flex: 0 0 100%;
+  max-width: 250px;
+  margin-bottom: 2rem;
+}
+
+.footer-logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo .logo-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #6504b5;
+}
+
+.footer-logo a:hover .logo-circle {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.footer-logo span {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.footer-tagline {
+  color: #d1c4e9;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Навигация в футере */
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.footer-nav-column {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 1.5rem;
+  padding-right: 1rem;
+}
+
+.footer-nav-column h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-nav-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-column li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-nav-column a {
+  color: #e9d1ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.footer-nav-column a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #b1acb9;
+}
+
+/* Социальные сети */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #6504b5;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7d27cc;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(101, 4, 181, 0.3);
+}
+
+.social-links i {
+  font-size: 1.2rem;
+}
+
+/* Копирайт */
+.copyright {
+  color: #e9d1ff;
+  font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+  }
+  
+  .footer-nav {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-links {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-nav {
+    flex-direction: column;
+  }
+  
+  .footer-nav-column {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-bottom {
+    padding-top: 1rem;
+  }
+} 
