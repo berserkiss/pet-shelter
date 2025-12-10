@@ -1,0 +1,31 @@
+FROM node:22.15.1-alpine
+
+WORKDIR /app
+
+# Настройка npm для решения проблем с сетью
+RUN npm config set fetch-timeout 600000 && \
+    npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000
+
+# Copy package files
+COPY package*.json ./
+COPY package-lock.json ./
+
+# Install dependencies with retry logic and fallback на альтернативный registry
+RUN npm install --prefer-offline --no-audit || \
+    (npm config set registry https://registry.npmmirror.com && npm install --prefer-offline --no-audit) || \
+    (sleep 10 && npm install --prefer-offline --no-audit) || \
+    (sleep 20 && npm install --prefer-offline --no-audit)
+
+# Copy the rest of the application
+COPY . .
+
+# Create images directory
+RUN mkdir -p images
+
+# Expose port 4000
+EXPOSE 4000
+
+# Start the application
+#CMD ["node", "server.js"]
