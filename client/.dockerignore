@@ -1,0 +1,16 @@
+# LF line endings only (CRLF can break patterns on Linux/WSL Docker)
+**/node_modules
+node_modules
+build
+**/build
+.git
+.gitignore
+*.md
+.env
+.env.*
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+coverage
+**/.cache
+*.log
