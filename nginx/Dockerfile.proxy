@@ -1,0 +1,5 @@
+FROM nginx:alpine
+RUN apk add --no-cache openssl
+COPY openssl-san.cnf /etc/nginx/ssl/openssl-san.cnf
+COPY docker-entrypoint.d/40-generate-ssl.sh /docker-entrypoint.d/40-generate-ssl.sh
+RUN chmod +x /docker-entrypoint.d/40-generate-ssl.sh
