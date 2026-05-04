@@ -1,0 +1,310 @@
+.adoption-history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header styling */
+.adoption-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-icon {
+  margin: 0 auto 16px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+  box-shadow: 0 8px 24px rgba(101, 4, 181, 0.35);
+}
+
+.adoption-header h1 {
+  font-size: 2.2rem;
+  color: #004c97;
+  margin-bottom: 10px;
+}
+
+.header-description {
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Filter container inherits most styles from PetFilter.css */
+.period-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.period-button {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  background-color: white;
+  color: #555;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.period-button:hover {
+  border-color: #6504b5;
+  color: #6504b5;
+}
+
+.period-button.active {
+  background-color: #6504b5;
+  border-color: #6504b5;
+  color: white;
+}
+
+/* Month sections */
+.pets-by-month-container {
+  margin-top: 30px;
+}
+
+.month-section {
+  margin-bottom: 40px;
+}
+
+.month-heading {
+  font-size: 1.6rem;
+  color: #004c97;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  text-transform: capitalize;
+}
+
+/* Pets grid */
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Pet card styling */
+.pet-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.pet-image {
+  height: 320px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.pet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.pet-card:hover .pet-image img {
+  transform: scale(1.05);
+}
+
+.adopted-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #6504b5;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.pet-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-info h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.pet-breed {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.adoption-date {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.date {
+  color: #6504b5;
+  font-weight: 500;
+}
+
+.adopter-info {
+  margin-top: auto;
+}
+
+.adopter-email, .adopter-phone {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+/* No pets message */
+.no-adopted-pets {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  margin: 30px 0;
+}
+
+.no-pets-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.no-adopted-pets h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.no-adopted-pets p {
+  color: #777;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Error and Loading states */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.retry-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #c62828;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.retry-button:hover {
+  background-color: #b71c1c;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(101, 4, 181, 0.2);
+  border-radius: 50%;
+  border-top-color: #6504b5;
+  margin: 0 auto 20px;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .adoption-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .pets-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+  }
+  
+  .pet-image {
+    height: 180px;
+  }
+  
+  .month-heading {
+    font-size: 1.4rem;
+  }
+  
+  .period-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .period-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adoption-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .pets-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .adoption-history-container {
+    padding: 15px;
+  }
+  
+  .pet-info h3 {
+    font-size: 1.2rem;
+  }
+} 
