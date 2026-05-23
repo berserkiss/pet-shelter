@@ -1,0 +1,89 @@
+/* AdminPanel.css - Стили для контейнера панели администрирования */
+
+.admin-panel-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.admin-panel-content {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Общие стили страниц админки */
+.admin-page-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-page-header {
+  margin-bottom: 24px;
+}
+
+.admin-page-header h1 {
+  color: #6504b5;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.admin-page-header p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.admin-search-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.admin-search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.admin-search-input:focus {
+  border-color: #6504b5;
+  box-shadow: 0 0 0 3px rgba(101, 4, 181, 0.1);
+}
+
+@media (max-width: 768px) {
+  .admin-panel-content {
+    padding: 1rem;
+  }
+
+  .admin-page-card {
+    padding: 16px;
+  }
+
+  .admin-search-bar {
+    flex-wrap: wrap;
+  }
+
+  .admin-search-input {
+    flex: 1 1 100%;
+  }
+} 

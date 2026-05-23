@@ -1,0 +1,156 @@
+.volunteer-skills,
+.volunteer-interests,
+.volunteer-experience,
+.volunteer-message {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.volunteer-skills h4,
+.volunteer-interests h4,
+.volunteer-experience h4,
+.volunteer-message h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.skills-list,
+.interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.skill-tag,
+.interest-tag {
+  display: inline-block;
+  background-color: rgba(101, 4, 181, 0.1);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.admin-message-section {
+  margin-top: 25px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+}
+
+.admin-message-section h4 {
+  color: var(--dark-text);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.admin-message-section textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.admin-message-section textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(101, 4, 181, 0.1);
+}
+
+.applicant-info {
+  width: 100%;
+}
+
+/* Стили для кнопок в модальном окне заявок на волонтерство - единообразные размеры */
+.application-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.application-actions .approve-btn,
+.application-actions .reject-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.application-actions .approve-btn {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.application-actions .approve-btn:hover {
+  background-color: #c8e6c9;
+}
+
+.application-actions .reject-btn {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.application-actions .reject-btn:hover {
+  background-color: #ffcdd2;
+}
+
+/* Отдельный класс — не использовать глобальный .delete-btn (в PetManagement он 40×40 под иконку) */
+.volunteer-delete-btn-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.application-actions .volunteer-app-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: auto;
+  min-width: min(100%, 200px);
+  height: auto;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.3;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.application-actions .volunteer-app-delete-btn:hover {
+  background-color: #ffcdd2;
+}
+
+.application-actions .approve-btn:disabled,
+.application-actions .reject-btn:disabled,
+.application-actions .volunteer-app-delete-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Подтверждение поверх модалки деталей (оба использовали z-index: 1000) */
+.volunteer-details-overlay {
+  z-index: 1000;
+}
+
+.volunteer-confirm-overlay {
+  z-index: 2000;
+}

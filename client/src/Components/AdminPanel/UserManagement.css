@@ -1,0 +1,352 @@
+/* UserManagement.css — таблица и модалки (общий каркас страницы из AdoptingRequests.css) */
+
+.user-management-page .um-table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #e8e0f0;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.user-management-page .um-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.user-management-page .um-table thead tr {
+  background-color: #f9f7ff;
+}
+
+.user-management-page .um-table th {
+  text-align: left;
+  padding: 12px 15px;
+  font-weight: 600;
+  color: #6504b5;
+  font-size: 14px;
+  white-space: nowrap;
+  border-bottom: 1px solid #e8e0f0;
+}
+
+.user-management-page .um-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  vertical-align: middle;
+}
+
+.user-management-page .um-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.user-management-page .um-table tbody tr:hover {
+  background-color: #faf7ff;
+}
+
+.user-management-page .um-row-blocked {
+  background-color: #fff8f8 !important;
+}
+
+.user-management-page .um-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-management-page .um-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6504b5, #9c4dca);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.user-management-page .um-avatar-lg {
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+  border-radius: 50%;
+}
+
+.user-management-page .um-role-badge,
+.user-management-page .um-status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.user-management-page .um-role-admin {
+  background-color: #ede7f6;
+  color: #6504b5;
+}
+
+.user-management-page .um-role-user {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.user-management-page .um-active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.user-management-page .um-blocked {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.user-management-page .um-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-management-page .um-btn {
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-management-page .um-btn-details {
+  background-color: transparent;
+  color: #6504b5;
+  border: 1px solid #6504b5;
+}
+
+.user-management-page .um-btn-details:hover {
+  background-color: #6504b5;
+  color: white;
+}
+
+.user-management-page .um-btn-block {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.user-management-page .um-btn-block:hover {
+  background-color: #ffcdd2;
+}
+
+.user-management-page .um-btn-unblock {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.user-management-page .um-btn-unblock:hover {
+  background-color: #c8e6c9;
+}
+
+.user-management-page .um-no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 36px;
+}
+
+.user-management-page .um-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.user-management-page .um-page-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6504b5;
+  transition: all 0.2s;
+}
+
+.user-management-page .um-page-btn:not(:disabled):hover {
+  border-color: #6504b5;
+  background: #f9f7ff;
+}
+
+.user-management-page .um-page-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  color: #aaa;
+}
+
+.user-management-page .um-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  gap: 12px;
+  color: #666;
+}
+
+/* Details Modal */
+.user-management-page .um-details-modal {
+  max-width: 720px;
+  width: 95%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.user-management-page .um-details-modal .modal-header {
+  flex-shrink: 0;
+}
+
+.user-management-page .um-details-modal .modal-header h2 {
+  color: #6504b5;
+}
+
+.user-management-page .um-details-modal .modal-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(90vh - 70px);
+  scroll-behavior: smooth;
+  padding: 20px;
+}
+
+.user-management-page .um-user-profile {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px;
+  background: #f9f7ff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e8e0f0;
+}
+
+.user-management-page .um-user-profile h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.user-management-page .um-user-profile p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.user-management-page .um-date-info {
+  margin-top: 6px !important;
+  font-size: 12px !important;
+  color: #888 !important;
+}
+
+.user-management-page .um-modal-action {
+  margin-bottom: 20px;
+}
+
+.user-management-page .um-section {
+  margin-top: 20px;
+}
+
+.user-management-page .um-section h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #6504b5;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e8e0f0;
+}
+
+.user-management-page .um-empty {
+  color: #666;
+  font-style: italic;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.user-management-page .um-sub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-management-page .um-sub-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 600;
+  color: #555;
+  background: #f5f5f5;
+  font-size: 13px;
+}
+
+.user-management-page .um-sub-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.user-management-page .um-sub-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.user-management-page .um-mono {
+  font-family: monospace;
+  font-size: 11px;
+  color: #888;
+}
+
+.user-management-page .um-pet-meta {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.user-management-page .um-form-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.user-management-page .um-status-pending  { background: #fff3e0; color: #e65100; }
+.user-management-page .um-status-inreview { background: #e3f2fd; color: #0277bd; }
+.user-management-page .um-status-approved { background: #e8f5e9; color: #2e7d32; }
+.user-management-page .um-status-rejected { background: #ffebee; color: #c62828; }
+
+@media (max-width: 768px) {
+  .user-management-page .admin-search-form {
+    flex-wrap: wrap;
+  }
+
+  .user-management-page .requests-search-input {
+    flex: 1 1 100%;
+  }
+
+  .user-management-page .um-actions {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,1329 @@
+/* ShelterManagement.css - Styles for the shelter management component */
+
+.shelter-management-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shelter-management-header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.shelter-management-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.shelter-management-header p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.add-shelter-btn {
+  background-color: #6504b5;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-shelter-btn:hover {
+  background-color: #5003a1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Notifications */
+.notification {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notification.success {
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  color: #2e7d32;
+}
+
+.notification.error {
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+  color: #c62828;
+}
+
+.notification-icon {
+  margin-right: 10px;
+  font-size: 1.25rem;
+}
+
+.close-notification {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.close-notification:hover {
+  opacity: 1;
+}
+
+/* Shelters Grid */
+.shelters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Shelter Card */
+.shelter-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.shelter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.shelter-card-header {
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shelter-card-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.shelter-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.delete-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #ff7875;
+}
+
+.disabled-btn {
+  background-color: #d9d9d9;
+  color: #8c8c8c;
+  cursor: not-allowed;
+}
+
+.disabled-btn:hover {
+  background-color: #d9d9d9;
+}
+
+.shelter-details {
+  padding: 12px 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.detail-group label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.detail-group p {
+  margin: 0;
+  color: #333;
+}
+
+.capacity-bar-container {
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  position: relative;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.capacity-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.capacity-bar.capacity-normal {
+  background-color: #4caf50;
+}
+
+.capacity-bar.capacity-warning {
+  background-color: #ff9800;
+}
+
+.capacity-bar.capacity-critical {
+  background-color: #f44336;
+}
+
+.capacity-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.shelter-description {
+  padding: 12px 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.shelter-description h3 {
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.shelter-description p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  /* Центрируем модальное окно */
+  position: relative;
+}
+
+.modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(101, 4, 181, 0.03) 0%, rgba(0, 76, 151, 0.02) 100%);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-content {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+/* КРИТИЧНО: Прокрутка должна быть на modal-content, а не на форме! */
+.shelter-form-modal .modal-content {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  max-height: calc(92vh - 150px) !important;
+  scroll-behavior: smooth !important;
+  /* Добавляем небольшой отступ снизу для кнопок */
+  padding-bottom: 20px !important;
+}
+
+/* Form styles - форма НЕ должна прокручиваться, прокручивается modal-content */
+.shelter-form {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+  flex: 1 !important;
+  background: white !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  min-height: min-content !important;
+}
+
+/* Header удален из JSX, стили больше не нужны */
+.shelter-form-header {
+  display: none !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  visibility: hidden !important;
+}
+
+.shelter-form-header h3 {
+  display: none !important;
+}
+
+.form-section {
+  padding: 1.5rem 3rem !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  background: white !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  margin: 0 !important;
+  display: block !important;
+  /* Убеждаемся, что секции не прижаты к краям */
+  max-width: 100%;
+}
+
+/* Первая секция должна быть видна СРАЗУ */
+.shelter-form > .form-section:first-of-type {
+  padding-top: 1.5rem !important;
+  margin-top: 0 !important;
+  border-top: none !important;
+  scroll-margin-top: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  z-index: 1 !important;
+}
+
+.form-section:nth-child(even) {
+  background: #fafbfc !important;
+}
+
+.form-section:last-of-type {
+  border-bottom: none !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.form-section-title {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  color: #6504b5;
+  font-weight: 600;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label::after {
+  content: "*";
+  color: #f44336;
+  margin-left: 4px;
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #6504b5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(101, 4, 181, 0.2);
+}
+
+.form-group input.input-error,
+.form-group textarea.input-error,
+.form-group select.input-error {
+  border-color: #f44336;
+  background-color: #fff8f8;
+}
+
+.form-group input.input-error:focus,
+.form-group textarea.input-error:focus,
+.form-group select.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+}
+
+.field-error-message {
+  color: #f44336;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.field-valid {
+  border-color: #4caf50 !important;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding: 20px 3rem;
+  border-top: 1px solid #e9ecef;
+  background-color: white;
+  flex-shrink: 0;
+  /* Делаем кнопки видимыми и не обрезанными */
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cancel-btn,
+.confirm-btn,
+.submit-btn {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  color: #343a40;
+  border: 1px solid #ced4da;
+}
+
+.cancel-btn:hover {
+  background-color: #e9ecef;
+}
+
+.confirm-btn,
+.submit-btn {
+  background-color: #6504b5;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-btn:hover,
+.submit-btn:hover {
+  background-color: #5003a1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading & No Results */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #6504b5;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-results {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.no-results h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.no-results p {
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .shelters-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    min-width: 100%;
+  }
+  
+  .shelter-management-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .modal {
+    width: 95%;
+  }
+}
+
+/* Стили заполненности приюта */
+.shelter-capacity {
+  background-color: #f8f8f8;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.capacity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.capacity-percentage {
+  font-weight: 600;
+  color: #333;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Стили для статусов заполненности */
+.capacity-normal {
+  background-color: var(--success);
+}
+
+.capacity-warning {
+  background-color: #ffa726;
+}
+
+.capacity-critical {
+  background-color: var(--error);
+}
+
+/* Notification Banner Style */
+.notification-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
+  max-width: 90%;
+  animation: slideDown 0.5s ease-out;
+}
+
+.notification-content {
+  background-color: #6504b5;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.notification-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.field-note {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Tooltip для полей */
+.field-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 100;
+  max-width: 250px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.form-group:hover .field-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.char-counter {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+  text-align: right;
+}
+
+/* Стили для статистики донатов */
+.donation-stats-group {
+  background: linear-gradient(135deg, #f5f0ff 0%, #ede0ff 100%);
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #d0b8f5;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(101, 4, 181, 0.08);
+}
+
+.donation-stats-group label {
+  font-weight: 700;
+  color: #5003a1;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: block;
+  letter-spacing: 0.3px;
+}
+
+.donation-period-inline {
+  font-weight: 500;
+  color: #7c3aed;
+  font-size: 0.85rem;
+}
+
+.donation-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.donation-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(101, 4, 181, 0.1);
+}
+
+.donation-stat-item:last-of-type {
+  border-bottom: none;
+}
+
+.donation-stat-label {
+  font-weight: 500;
+  color: #5a4a6b;
+  font-size: 0.85rem;
+}
+
+.donation-stat-value {
+  font-weight: 700;
+  color: #6504b5;
+  font-size: 0.95rem;
+}
+
+.donation-progress {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(101, 4, 181, 0.15);
+}
+
+.donation-progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(101, 4, 181, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.donation-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6504b5 0%, #9b59f5 100%);
+  border-radius: 6px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.donation-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: #6504b5;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(101, 4, 181, 0.4);
+}
+
+.donation-progress-text {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.reset-donations-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(255, 77, 79, 0.2);
+}
+
+.reset-donations-btn:hover {
+  background-color: #ff7875;
+  box-shadow: 0 4px 8px rgba(255, 77, 79, 0.3);
+  transform: translateY(-1px);
+}
+
+.reset-donations-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 77, 79, 0.2);
+}
+
+.reset-donation-goal-btn,
+.view-donation-history-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  justify-content: center;
+}
+
+.reset-donation-goal-btn {
+  background-color: #ff9800;
+  color: white;
+}
+
+.reset-donation-goal-btn:hover {
+  background-color: #fb8c00;
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.reset-donation-goal-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
+}
+
+.view-donation-history-btn {
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(101, 4, 181, 0.2);
+}
+
+.view-donation-history-btn:hover {
+  background: linear-gradient(135deg, #5003a1 0%, #7b2ef0 100%);
+  box-shadow: 0 4px 12px rgba(101, 4, 181, 0.35);
+  transform: translateY(-1px);
+}
+
+.view-donation-history-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(101, 4, 181, 0.2);
+}
+
+/* Стили для истории донатов */
+.donation-history-container {
+  margin-top: 15px;
+  padding: 16px;
+  background: linear-gradient(135deg, #f5f0ff 0%, #ede0ff 100%);
+  border-radius: 12px;
+  border: 1px solid #d0b8f5;
+}
+
+.donation-history-container h4 {
+  margin: 0 0 15px 0;
+  color: #5003a1;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.donation-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.donation-history-month {
+  background-color: white;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid rgba(101, 4, 181, 0.12);
+  box-shadow: 0 2px 8px rgba(101, 4, 181, 0.07);
+}
+
+.donation-history-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #7c3aed;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.donation-history-month-header h5 {
+  margin: 0;
+  color: #3c1d65;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.donation-history-month-summary {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.donation-history-total,
+.donation-history-count {
+  color: #5a4a6b;
+}
+
+.donation-history-total strong,
+.donation-history-count strong {
+  color: #6504b5;
+  font-weight: 700;
+}
+
+.donation-history-donations {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.donation-history-item {
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #faf7ff 0%, #f3ecff 100%);
+  border-radius: 8px;
+  border-left: 3px solid #6504b5;
+  transition: box-shadow 0.2s ease;
+}
+
+.donation-history-item:hover {
+  box-shadow: 0 2px 8px rgba(101, 4, 181, 0.12);
+}
+
+.donation-history-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.donation-history-amount {
+  font-weight: 700;
+  color: #6504b5;
+  font-size: 0.95rem;
+}
+
+.donation-history-donor {
+  color: #4a4a6a;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.donation-history-date {
+  color: #7c6fa0;
+  font-size: 0.8rem;
+}
+
+.donation-history-message {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(101, 4, 181, 0.1);
+  color: #5a4a6b;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.no-donation-history {
+  text-align: center;
+  padding: 24px;
+  color: #7c6fa0;
+  font-size: 0.9rem;
+}
+
+/* Модальное окно истории донатов */
+.donation-history-modal {
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(101, 4, 181, 0.25), 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(101, 4, 181, 0.08);
+}
+
+.donation-history-modal .modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid rgba(101, 4, 181, 0.1);
+  background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+}
+
+.donation-history-modal .modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.donation-history-modal .btn-close {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.donation-history-modal .btn-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.donation-history-modal-content {
+  padding: 2rem;
+  overflow: hidden !important;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(85vh - 120px);
+}
+
+.donation-history-modal .donation-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(85vh - 200px);
+  scroll-behavior: smooth;
+  padding-right: 12px;
+  margin-right: -4px;
+}
+
+/* Стили скроллбара для списка истории пожертвований */
+.donation-history-modal .donation-history-list::-webkit-scrollbar {
+  width: 10px !important;
+  display: block !important;
+}
+
+.donation-history-modal .donation-history-list::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+  border-radius: 5px !important;
+}
+
+.donation-history-modal .donation-history-list::-webkit-scrollbar-thumb {
+  background: #6504b5 !important;
+  border-radius: 5px !important;
+  border: 2px solid #f1f1f1;
+}
+
+.donation-history-modal .donation-history-list::-webkit-scrollbar-thumb:hover {
+  background: #5003a1 !important;
+}
+
+/* Для Firefox */
+.donation-history-modal .donation-history-list {
+  scrollbar-width: thin;
+  scrollbar-color: #6504b5 #f1f1f1;
+}
+
+.donation-history-modal .donation-history-month {
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.donation-history-modal .donation-history-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #6504b5;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.donation-history-modal .donation-history-month-header h5 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.donation-history-modal .donation-history-month-summary {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+
+.donation-history-modal .donation-history-total strong,
+.donation-history-modal .donation-history-count strong {
+  color: #6504b5;
+  font-weight: 600;
+}
+
+.donation-history-modal .donation-history-donations {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.donation-history-modal .donation-history-item {
+  padding: 12px;
+  background-color: white;
+  border-radius: 8px;
+  border-left: 3px solid #6504b5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.donation-history-modal .donation-history-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.donation-history-modal .donation-history-amount {
+  font-weight: 600;
+  color: #00C49F;
+  font-size: 1rem;
+}
+
+.donation-history-modal .donation-history-donor {
+  color: #555;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.donation-history-modal .donation-history-date {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.donation-history-modal .donation-history-message {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.donation-history-modal .no-donation-history {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+  font-size: 1rem;
+}
+
+.donation-history-modal .loading-history {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6504b5;
+  font-size: 1rem;
+}
+
+/* Адаптивность для модального окна истории */
+@media (max-width: 768px) {
+  .donation-history-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .donation-history-modal .modal-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .donation-history-modal .modal-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .donation-history-modal-content {
+    padding: 1.5rem;
+  }
+  
+  .donation-history-modal .donation-history-month-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .donation-history-modal .donation-history-item-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Стили для информации о цели сбора в описании приюта */
+.donation-goal-info {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background-color: #f0f9ff;
+  border-left: 4px solid #6504b5;
+  border-radius: 4px;
+}
+
+.donation-goal-info h4 {
+  margin: 0 0 6px 0;
+  font-size: 0.9rem;
+  color: #6504b5;
+  font-weight: 600;
+}
+
+.donation-goal-info p {
+  margin: 0;
+  color: #555;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.requests-search-bar {
+  position: relative;
+}
+
+.requests-search-input {
+  width: 100%;
+  padding: 10px 40px 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.requests-search-input:focus {
+  border-color: #6504b5;
+}
+
+.requests-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.requests-search-clear:hover {
+  color: #555;
+}

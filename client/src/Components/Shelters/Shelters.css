@@ -1,0 +1,1142 @@
+/* Добавляем анимацию для уведомлений */
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.shelters-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.shelters-container::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='none' stroke='%23f0f0f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5'%3E%3C/path%3E%3Cpath d='M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shelters-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 35px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 248, 255, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 
+        0 6px 24px rgba(101, 4, 181, 0.08),
+        0 2px 8px rgba(101, 4, 181, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(101, 4, 181, 0.1);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shelters-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #6504b5 0%, #8b3dff 50%, #fea034 100%);
+    border-radius: 3px;
+}
+
+.header-icon {
+    background: linear-gradient(135deg, #6504b5 0%, #8b3dff 100%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 
+        0 8px 24px rgba(101, 4, 181, 0.3),
+        0 4px 12px rgba(101, 4, 181, 0.2);
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-icon::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6504b5 0%, #8b3dff 50%, #fea034 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(12px);
+}
+
+.header-icon:hover::after {
+    opacity: 0.6;
+}
+
+.header-icon:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.header-icon svg {
+    color: white;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.shelters-header h1 {
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #6504b5 0%, #8b3dff 50%, #6504b5 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.4rem;
+    font-weight: 900;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.5px;
+    animation: gradientText 4s ease infinite;
+}
+
+@keyframes gradientText {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+.shelters-header h1::before,
+.shelters-header h1::after {
+    content: "🐾";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(101, 4, 181, 0.2));
+}
+
+.shelters-header h1::before {
+    left: -35px;
+}
+
+.shelters-header h1::after {
+    right: -35px;
+}
+
+.header-description {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Стили для фильтров */
+.shelters-filters {
+    position: relative;
+    z-index: 100;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 4px 16px rgba(101, 4, 181, 0.08),
+        0 2px 8px rgba(101, 4, 181, 0.05);
+    border: 1px solid rgba(101, 4, 181, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.filters-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(101, 4, 181, 0.1);
+}
+
+.filters-title svg {
+    color: #6504b5;
+    width: 24px;
+    height: 24px;
+}
+
+.filters-title h3 {
+    margin: 0;
+    color: #6504b5;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.filter-group select,
+.filter-group .styled-select__trigger {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-group select:hover,
+.filter-group .styled-select__trigger:hover:not(:disabled) {
+    border-color: #d1d5db;
+}
+
+.filter-group select:focus,
+.filter-group .styled-select__trigger:focus {
+    outline: none;
+    border-color: #6504b5;
+    box-shadow: 0 0 0 3px rgba(101, 4, 181, 0.1);
+}
+
+.filter-group .styled-select {
+    width: 100%;
+}
+
+.filter-group .styled-select {
+    position: relative;
+    z-index: 1;
+}
+
+.filter-group .styled-select--open {
+    z-index: 250;
+}
+
+.filter-group .styled-select__list {
+    z-index: 1;
+}
+
+.range-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.range-inputs input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
+}
+
+.reset-filters {
+    padding: 12px 24px;
+    background: #6504b5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    height: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(101, 4, 181, 0.2);
+}
+
+.reset-filters:hover {
+    background: #5203a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(101, 4, 181, 0.3);
+}
+
+.results-count {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--dark-text);
+    text-align: right;
+}
+
+/* Стили для карточек приютов (ниже блока фильтров, чтобы список дропдауна не уходил под карточки) */
+.shelters-grid {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    align-items: stretch;
+}
+
+.shelter-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.shelter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.shelter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+}
+
+.shelter-header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 0;
+}
+
+.shelter-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-right: 8px;
+    margin-left: 10px;
+}
+
+.shelter-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.shelter-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.shelter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.info-item svg {
+    color: var(--primary);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.shelter-capacity {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.capacity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.capacity-percentage {
+    font-weight: 600;
+    color: #333;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.shelter-description {
+    flex: 0 0 auto;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.description-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.description-header svg {
+    color: var(--primary);
+    width: 18px;
+    height: 18px;
+}
+
+.description-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.shelter-description p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Стили кнопок перемещены в секцию .shelter-actions (строка 630+) */
+
+/* Capacity status colors */
+.capacity-normal {
+    background-color: var(--success);
+}
+
+.capacity-warning {
+    background-color: #ffa726;
+}
+
+.capacity-critical {
+    background-color: var(--error);
+}
+
+.loading, .error-message, .no-shelters, .no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+}
+
+.error-message {
+    color: var(--error);
+}
+
+.no-shelters, .no-results {
+    color: var(--gray-text);
+}
+
+/* Стили для статусов заполненности */
+.capacity-normal {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.capacity-warning {
+    background-color: rgba(255, 167, 38, 0.1);
+    border: 1px solid #ffa726;
+    color: #f57c00;
+}
+
+.capacity-critical {
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+}
+
+@media (max-width: 1024px) {
+    .shelters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .shelters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .shelters-filters {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .shelter-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .shelter-header-left {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .shelter-header-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .shelter-header-actions .volunteer-button,
+    .shelter-header-actions .donation-button {
+        width: 100%;
+    }
+    
+    .shelter-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .shelter-info {
+        gap: 15px;
+    }
+    
+    .info-item {
+        font-size: 13px;
+    }
+    
+    .volunteer-button {
+        margin-top: 20px;
+    }
+}
+
+/* Стили для уведомлений */
+.notification-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
+  max-width: 90%;
+  animation: slideDown 0.5s ease-out;
+}
+
+.notification-content {
+  background-color: #6504b5;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.notification-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+/* Стиль для компонента уведомления */
+.shelter-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 15px 25px;
+    background-color: #6504b5;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    animation: slideDown 0.5s ease-out;
+    max-width: 90%;
+    width: auto;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Стили для выделенного приюта в шапке */
+
+/* Блок статистики пожертвований */
+.donation-stats {
+  margin: 0 0 16px 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #fef2f2 0%, #fce7f3 100%);
+  border-radius: 12px;
+  border: 1px solid #fecdd3;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.donation-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.donation-header svg {
+  width: 20px;
+  height: 20px;
+  color: #ec4899;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.donation-header > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.donation-period-hint {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b5a7e;
+}
+
+.donation-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #be123c;
+  margin: 0;
+}
+
+.donation-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #881337;
+  font-weight: 500;
+}
+
+.donation-progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.donation-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+  box-shadow: 0 2px 4px rgba(236, 72, 153, 0.3);
+}
+
+.donation-count {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #9f1239;
+  font-weight: 500;
+}
+
+.donation-total {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #881337;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation-total strong {
+  font-size: 1.25rem;
+  color: #be123c;
+}
+
+/* Стили для кнопок в header */
+.shelter-header-actions .volunteer-button,
+.shelter-header-actions .donation-button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.volunteer-button,
+.donation-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    visibility: visible !important;
+    opacity: 1 !important;
+    white-space: nowrap;
+}
+
+.volunteer-button {
+    background: linear-gradient(135deg, #6504b5 0%, #8b5cf6 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(101, 4, 181, 0.25);
+}
+
+.volunteer-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(101, 4, 181, 0.35);
+    background: linear-gradient(135deg, #5003a1 0%, #7c3aed 100%);
+}
+
+.donation-button {
+    background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.25);
+}
+
+.donation-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+    background: linear-gradient(135deg, #db2777 0%, #e11d48 100%);
+}
+
+.volunteer-button svg,
+.donation-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.view-pets-button {
+    background-color: var(--secondary);
+    position: relative;
+}
+
+.view-pets-button:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 76, 151, 0.25);
+}
+
+@media (max-width: 768px) {
+    .shelter-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .volunteer-button,
+    .donation-button {
+        width: 100%;
+    }
+}
+
+/* AI Assistant Button */
+.shelter-ai-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #6504b5, #9c4dca);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(101, 4, 181, 0.3);
+}
+
+.shelter-ai-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(101, 4, 181, 0.4);
+}
+
+/* AI Chat Modal */
+@keyframes shelterAISlideUp {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+.shelter-ai-modal {
+    background: white;
+    border-radius: 20px;
+    width: min(560px, 96vw);
+    max-width: 96vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+    animation: shelterAISlideUp 0.3s cubic-bezier(0.34, 1.26, 0.64, 1) both;
+}
+
+.shelter-ai-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, #6504b5, #9c4dca);
+    color: white;
+}
+
+.shelter-ai-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+}
+
+.shelter-ai-close {
+    background: rgba(255,255,255,0.18);
+    border: none;
+    color: white;
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.shelter-ai-close:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+.shelter-ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 280px;
+    max-height: 460px;
+}
+
+.shelter-ai-welcome {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.65;
+    background: #faf7ff;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #ede0ff;
+}
+
+.shelter-ai-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.shelter-ai-suggestion-btn {
+    padding: 9px 18px;
+    background: #f0eaff;
+    color: #6504b5;
+    border: 1.5px solid #d0c0f0;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.shelter-ai-suggestion-btn:hover {
+    background: #6504b5;
+    color: white;
+    border-color: #6504b5;
+    transform: translateY(-1px);
+}
+
+.shelter-ai-msg {
+    display: flex;
+    max-width: 88%;
+}
+
+.shelter-ai-msg-user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.shelter-ai-msg-ai {
+    align-self: flex-start;
+}
+
+.shelter-ai-msg-content {
+    padding: 11px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+}
+
+.shelter-ai-msg-user .shelter-ai-msg-content {
+    background: linear-gradient(135deg, #6504b5, #9c4dca);
+    color: white;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 8px rgba(101,4,181,0.25);
+}
+
+.shelter-ai-msg-ai .shelter-ai-msg-content {
+    background: #f5f0ff;
+    color: #2a0060;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.shelter-ai-typing {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 14px 18px !important;
+}
+
+.shelter-ai-typing span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9c4dca;
+    animation: aiTyping 1.2s infinite;
+}
+
+.shelter-ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+.shelter-ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes aiTyping {
+    0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+    30% { opacity: 1; transform: scale(1); }
+}
+
+/* Guest banner */
+.shelter-ai-guest-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: linear-gradient(90deg, #f3ecff 0%, #faf7ff 100%);
+    border-top: 1.5px solid #e0d0ff;
+    color: #6504b5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.shelter-ai-guest-banner svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+.shelter-ai-guest-banner span {
+    flex: 1;
+}
+
+.shelter-ai-guest-banner button {
+    height: 34px;
+    padding: 0 18px;
+    background: #6504b5;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.shelter-ai-guest-banner button:hover {
+    background: #4a0390;
+    transform: translateY(-1px);
+}
+
+/* Input bar */
+.shelter-ai-input-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1.5px solid #f0eaff;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.shelter-ai-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    height: 44px;
+    padding: 0 18px;
+    border: 1.5px solid #e0d4f7;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    background: #fdfaff;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.shelter-ai-input:focus {
+    border-color: #6504b5;
+    box-shadow: 0 0 0 3px rgba(101, 4, 181, 0.1);
+}
+
+.shelter-ai-input:disabled {
+    background: #f5f0ff;
+    color: #aaa;
+}
+
+.shelter-ai-send-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6504b5, #9c4dca);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(101,4,181,0.3);
+}
+
+.shelter-ai-send-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4a0390, #7b2fa6);
+    transform: scale(1.07);
+    box-shadow: 0 5px 14px rgba(101,4,181,0.4);
+}
+
+.shelter-ai-send-btn:disabled {
+    background: #ddd;
+    box-shadow: none;
+    cursor: default;
+}
+
+@media (max-width: 480px) {
+    .shelter-ai-modal {
+        width: 100%;
+        max-width: 100vw;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .shelter-ai-suggestion-btn {
+        width: 100%;
+    }
+
+    .shelter-ai-input-bar {
+        padding: 12px 14px;
+    }
+}
