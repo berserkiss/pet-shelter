@@ -1,0 +1,185 @@
+/* AdminNavBar — изолирован от глобальных стилей App.css */
+
+.admin-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+  min-height: 56px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  gap: 1rem;
+}
+
+/* ── Логотип ── */
+.admin-navbar .admin-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.admin-navbar .admin-logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6504b5, #8b3dff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(101, 4, 181, 0.28);
+}
+
+.admin-navbar .admin-logo-icon svg {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  display: block;
+}
+
+.admin-navbar .admin-logo-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #6504b5;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* ── Навигация: перенос слов, по центру по вертикали ── */
+.admin-navbar .admin-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 0;
+  gap: 0.15rem 0.35rem;
+  row-gap: 0.2rem;
+}
+
+.admin-navbar .admin-nav-links li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-navbar .admin-nav-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 9.25rem;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.55rem;
+  color: #444;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: color 0.15s, background 0.15s;
+}
+
+.admin-navbar .admin-nav-links li a:hover {
+  color: #6504b5;
+  background: rgba(101, 4, 181, 0.06);
+}
+
+.admin-navbar .admin-nav-links li a.active {
+  color: #6504b5;
+  background: rgba(101, 4, 181, 0.08);
+  box-shadow: inset 0 -2px 0 #6504b5;
+}
+
+/* ── Правый блок ── */
+.admin-navbar .logout-username {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  align-self: center;
+}
+
+.admin-navbar .logout-username p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.admin-navbar .logout-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: #6504b5;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 6px rgba(101, 4, 181, 0.22);
+}
+
+.admin-navbar .logout-btn:hover {
+  background: #5003a1;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1400px) {
+  .admin-navbar .logout-username p {
+    display: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .admin-navbar .admin-logo-text {
+    display: none;
+  }
+
+  .admin-navbar .admin-nav-links li a {
+    max-width: 8rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-navbar {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .admin-navbar .admin-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 0.25rem;
+  }
+
+  .admin-navbar .admin-nav-links li a {
+    max-width: 10rem;
+  }
+
+  .admin-navbar .logout-username {
+    margin-left: auto;
+  }
+}
