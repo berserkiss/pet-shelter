@@ -1,0 +1,47 @@
+# Dockerfile для клиента
+FROM node:22.15.1-alpine AS builder
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Настройка npm для решения проблем с сетью
+# Попробуем использовать альтернативный registry если основной недоступен
+RUN npm config set fetch-timeout 600000 && \
+    npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000
+
+# Копируем package.json и package-lock.json
+COPY package*.json ./
+
+# Устанавливаем зависимости с retry logic и fallback на альтернативный registry
+RUN npm install --prefer-offline --no-audit || \
+    (npm config set registry https://registry.npmmirror.com && npm install --prefer-offline --no-audit) || \
+    (sleep 10 && npm install --prefer-offline --no-audit) || \
+    (sleep 20 && npm install --prefer-offline --no-audit)
+
+# Копируем все файлы клиента
+COPY . .
+
+ARG REACT_APP_GOOGLE_CLIENT_ID
+ENV REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID
+
+# RUN chmod a+x /usr/src/app/node_modules/.bin/react-scripts
+
+# Собираем проект для продакшена
+RUN npm run build
+
+# Второй этап — nginx из пакетов Alpine (не тянем образ docker.io/library/nginx:alpine,
+# что обходит ошибки credential helper при pull с Docker Hub).
+FROM node:22.15.1-alpine
+
+RUN apk add --no-cache nginx
+
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# В Alpine пакет nginx подключает server-блоки из http.d
+COPY nginx.conf /etc/nginx/http.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
