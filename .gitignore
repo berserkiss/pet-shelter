@@ -1,0 +1,33 @@
+nginx/certs/*.crt
+nginx/certs/*.key
+nginx/certs/*.pem
+
+# Dependencies
+node_modules/
+
+# Environment files - real credentials, never commit
+.env
+client/.env
+server/.env
+
+# Build output
+build/
+dist/
+
+# IDE
+.idea/
+
+# Word lock files
+~$*.docx
+
+# Thesis drafts/diagrams/generation tooling - not app source
+docs/
+diagrams/
+pptx_unpacked/
+extracted_images/
+tools/
+*.docx
+*.pptx
+
+# OS
+.DS_Store

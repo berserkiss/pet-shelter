@@ -1,0 +1,76 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.server
+    container_name: pawfinds-server
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      - mongooseURL=${MONGOOSE_URL}
+      - PORT=${SERVER_PORT}
+      # Разрешённые origin'ы для CORS/Socket.IO (через запятую; добавьте https после включения TLS на proxy)
+      # Origin’ы с портами proxy (на Windows 80/8080 могут быть в excluded range — см. порты proxy ниже)
+      - CLIENT_URLS=${CLIENT_URLS}
+      - SECRET=${SESSION_SECRET}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_APP_PASS=${EMAIL_APP_PASS}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
+    # Код пишет и отдаёт файлы из path.join(__dirname, 'images') → в контейнере это /app/images, не /app/server/images
+    volumes:
+      - ./server/images:/app/images
+    command: /bin/sh -c "node wait-for-mongo.js && node seed.js && node server.js"
+    depends_on:
+      - mongodb
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+      args:
+        REACT_APP_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+    container_name: pawfinds-client
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+  proxy:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.proxy
+    container_name: pawfinds-proxy
+    restart: always
+    depends_on:
+      - client
+      - server
+    # Высокие порты реже попадают в Windows excludedportrange (чем 80/8080)
+    ports:
+      - "18080:80"
+      - "18443:443"
+    volumes:
+      - ./nginx/dev-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs:/etc/nginx/certs
+
+volumes:
+  mongodb_data:
