@@ -1,10 +1,11 @@
 # Pet Adoption Platform
 
-Diploma project (Software Engineering for Information Technologies —
-Программное обеспечение информационных технологий): a full-stack MERN
-platform connecting animal shelters with adopters. Includes AI-assisted pet
-breed recognition, a pet-matching recommendation engine, an AI chat
-assistant, donations via Stripe, and a full admin panel for shelters.
+This is my diploma project (Software Engineering for Information Technologies,
+"Программное обеспечение информационных технологий"). It's a full-stack MERN
+app that connects animal shelters with people looking to adopt. It can
+recognize a pet's breed from a photo, recommend pets based on what you like,
+chat with adopters through an AI assistant, take donations through Stripe,
+and gives shelters a full admin panel to run things.
 
 ## Stack
 
@@ -12,7 +13,7 @@ assistant, donations via Stripe, and a full admin panel for shelters.
 - **Server**: Node.js / Express, MongoDB (Mongoose)
 - **Storage**: Cloudinary (pet images)
 - **Payments**: Stripe
-- **AI**: Google Gemini (chat assistant, pet breed recognition, recommendations)
+- **AI**: Google Gemini (chat assistant, breed recognition, recommendations)
 - **Auth**: JWT + Google OAuth, email OTP
 - **Deployment**: Docker Compose, nginx reverse proxy with TLS
 
@@ -34,15 +35,15 @@ diploma_project/
 ## Features
 
 - Pet listings with filtering, comparison, and favorites
-- Adoption request forms and shelter-side review workflow
-- AI pet breed recognition from photos
+- Adoption request forms and a shelter-side review workflow
+- AI breed recognition from photos
 - AI-driven pet recommendations based on user preferences
 - AI chat assistant for adopters
 - Donations (one-off and scheduled) via Stripe
 - Volunteer applications
 - Pet care calendar
-- Admin panel: user/shelter/pet/volunteer management, dashboard
-- Email OTP verification, Google OAuth login
+- Admin panel for managing users, shelters, pets, and volunteers, plus a dashboard
+- Email OTP verification and Google OAuth login
 
 ## Local development
 
@@ -53,8 +54,8 @@ cp .env.example .env   # fill in real values
 docker compose up --build
 ```
 
-Services: client on `:3000`, server on `:4000`, MongoDB on `:27017`, nginx
-proxy on `:18080`/`:18443`.
+This starts the client on `:3000`, the server on `:4000`, MongoDB on
+`:27017`, and the nginx proxy on `:18080`/`:18443`.
 
 ### Without Docker
 
@@ -74,14 +75,14 @@ npm start
 
 ## Environment variables
 
-See `.env.example` (root, `client/`, `server/`) for the full list — MongoDB
-connection, session secret, email (Gmail App Password), Stripe keys, Google
-OAuth client ID, Gemini API key, and Cloudinary credentials. None of these
-are committed; generate/obtain your own.
+Check `.env.example` (root, `client/`, `server/`) for the full list: MongoDB
+connection string, session secret, email (Gmail App Password), Stripe keys,
+Google OAuth client ID, Gemini API key, and Cloudinary credentials. None of
+this is committed, so you'll need to generate or grab your own values.
 
 ## Not tracked in this repo
 
 - `node_modules/`
-- `.env` files (real credentials — see `.env.example` for the shape)
-- `docs/`, `diagrams/`, `pptx_unpacked/`, `extracted_images/`, `tools/` — thesis
-  writing/diagram-generation material, not application source
+- `.env` files (real credentials, see `.env.example` for the shape)
+- `docs/`, `diagrams/`, `pptx_unpacked/`, `extracted_images/`, `tools/`: thesis
+  writing and diagram-generation material, not application source
